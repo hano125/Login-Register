@@ -20,3 +20,21 @@ Route::get('/', function () {
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("verified");
+
+// Route::get("fill","OffersController@getOffers");
+
+
+//Insert data route  u must use group of route becose its many oprattion
+
+    // Route::group(['prefix'=>'offers'],function(){
+
+    //     Route::get("store","CrudController@store");
+
+    // });
+
+    Route::group(['prefix'=>'offers'],function(){
+
+        Route::get("create","CrudController@create");
+        Route::post("store","CrudController@store")->name('offer.store');
+
+    });
